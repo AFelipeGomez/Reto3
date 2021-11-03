@@ -27,11 +27,9 @@ public class Client {
 	private String password;
 
 	@Column(name = "name", length = 255)
-	private String name;
+	private String name;	
 
-	
-
-	@Column(name = "age", nullable = true)
+	@Column(name = "age")
 	private int age;
 
 	@OneToMany(cascade = { CascadeType.PERSIST }, mappedBy = "client", fetch = FetchType.LAZY)

@@ -25,7 +25,7 @@ public class Reservation  {
 	private Date devolutionDate;
 
 	@Column(name = "status", length = 255)
-	private String status="created";
+	private String status;
 
 	@ManyToOne
 	@JoinColumn(name = "skate_id")

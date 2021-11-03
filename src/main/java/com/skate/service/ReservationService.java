@@ -1,7 +1,13 @@
 package com.skate.service;
 
 import com.skate.model.Reservation;
+import com.skate.model.custom.CountClient;
+import com.skate.model.custom.StatusAmount;
 import com.skate.repository.ReservationRepository;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -67,5 +73,32 @@ public class ReservationService {
             }
         }
         return reservation;
+    }
+     public List<Reservation> getReservationsPeriod(String dateA, String dateB){
+        SimpleDateFormat parser=new SimpleDateFormat("yyyy-MM-dd");
+        Date a= new Date();
+        Date b=new Date();
+        try {
+            a = parser.parse(dateA);
+            b = parser.parse(dateB);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if(a.before(b)){
+            return reservationRepository.getReservationPeriod(a,b);
+        }else{
+            return new ArrayList<>();
+        }
+
+    }
+    
+    public StatusAmount getReservationsStatusReport(){
+        List<Reservation>completed=reservationRepository.getReservationsByStatus("completed");
+        List<Reservation>cancelled=reservationRepository.getReservationsByStatus("cancelled");
+        return new StatusAmount(completed.size(),cancelled.size());
+    }
+    
+    public List<CountClient> getTopClients(){
+        return reservationRepository.getTopClients();
     }
 }
