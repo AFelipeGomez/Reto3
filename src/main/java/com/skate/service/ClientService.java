@@ -63,10 +63,11 @@ public class ClientService {
                    cliente.get().setPassword(client.getPassword());
                }
                
-              /* if (client.getAge()!=null){
-                   cliente.get().setAge(client.getAge());
-               }
-               */
+               /*if (client.getAge()!=null){
+                   
+               }*/
+               cliente.get().setAge(client.getAge());
+               
 
 return clientRepository.save(cliente.get());
             }else{
