@@ -20,7 +20,7 @@ public class Category {
     private String name;
 
     @Column(name = "description", length = 255)
-    private String descriptions;
+    private String description;
 
     @OneToMany(cascade = {CascadeType.MERGE}, mappedBy = "category", fetch = FetchType.LAZY)
     @JsonIgnoreProperties("category")
@@ -30,7 +30,7 @@ public class Category {
         super();
         this.id = id;
         this.name = name;
-        this.descriptions = descriptions;
+        this.description = description;
         this.skates = skates;
     }
 
@@ -55,11 +55,11 @@ public class Category {
     }
 
     public String getDescription() {
-        return descriptions;
+        return description;
     }
 
     public void setDescription(String description) {
-        this.descriptions = description;
+        this.description = description;
     }
 
     public List<Skate> getSkates() {

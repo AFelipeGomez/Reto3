@@ -19,15 +19,17 @@ public class Client {
    @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idClient;
-
-	@Column(name = "name", length = 255)
-	private String name;
-
-	@Column(name = "email", length = 255)
+   
+        @Column(name = "email", length = 255)
 	private String email;
 
 	@Column(name = "password", length = 255)
 	private String password;
+
+	@Column(name = "name", length = 255)
+	private String name;
+
+	
 
 	@Column(name = "age", nullable = true)
 	private int age;
